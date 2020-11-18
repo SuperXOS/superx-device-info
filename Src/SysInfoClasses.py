@@ -21,40 +21,40 @@ class ThisSysSys:
         _uname = platform.uname()
         _boot_time_timestamp = psutil.boot_time()
         _bt = datetime.fromtimestamp(_boot_time_timestamp)
-        self.System = f"{_uname.system}"
-        self.Node = f"{_uname.node}"
-        self.Release =f"{_uname.release}"
-        self.Version =f"{_uname.version}"
-        self.Machine =f"{_uname.machine}"
-        self.Processor =f"{_uname.processor}"
-        self.Boot_Time =f"{_bt.year}/{_bt.month}/{_bt.day} {_bt.hour}:{_bt.minute}:{_bt.second}"
+        self.system = f"{_uname.system}"
+        self.node = f"{_uname.node}"
+        self.release =f"{_uname.release}"
+        self.version =f"{_uname.version}"
+        self.machine =f"{_uname.machine}"
+        self.processor =f"{_uname.processor}"
+        self.boot_time =f"{_bt.year}/{_bt.month}/{_bt.day} {_bt.hour}:{_bt.minute}:{_bt.second}"
 
 
 class ThisSysCPU:
     def __init__(self):
         # number of cores
-        self.Physical_Cores = psutil.cpu_count(logical=False)
-        self.Total_Cores = psutil.cpu_count(logical=True)
+        self.physical_cores = psutil.cpu_count(logical=False)
+        self.total_cores = psutil.cpu_count(logical=True)
         # CPU frequencies
         _cpufreq = psutil.cpu_freq()
-        self.Max_Frequency =f"{_cpufreq.max:.2f}Mhz"
-        self.Min_Frequency =f"{_cpufreq.min:.2f}Mhz"
-        self.Current_Frequency =f"{_cpufreq.current:.2f}Mhz"
+        self.max_frequency =f"{_cpufreq.max:.2f}Mhz"
+        self.min_frequency =f"{_cpufreq.min:.2f}Mhz"
+        self.current_frequency =f"{_cpufreq.current:.2f}Mhz"
         
 class ThisSysMem:
     def __init__(self):
         # get the memory details
         _svmem = psutil.virtual_memory()
-        self.Total_Memory = f"{get_size(_svmem.total)}"
-        self.Available_Memory = f"{get_size(_svmem.available)}"
-        self.Used_Memory = f"{get_size(_svmem.used)}"
-        self.Percentage = f"{_svmem.percent}%"
+        self.total_memory = f"{get_size(_svmem.total)}"
+        self.available_memory = f"{get_size(_svmem.available)}"
+        self.used_memory = f"{get_size(_svmem.used)}"
+        self.percentage = f"{_svmem.percent}%"
         # get the swap memory details (if exists)
         _swap = psutil.swap_memory()
-        self.Total_Swap = f"{get_size(_swap.total)}"
-        self.Free_Swap = f"{get_size(_swap.free)}"
-        self.Used_Swap = f"{get_size(_swap.used)}"
-        self.Percentage_Swap = f"{_swap.percent}%"
+        self.total_swap = f"{get_size(_swap.total)}"
+        self.free_swap = f"{get_size(_swap.free)}"
+        self.used_swap = f"{get_size(_swap.used)}"
+        self.percentage_swap = f"{_swap.percent}%"
     def show_partitions_disks(cls):
         # Disk Information
         for partition in partitions:
@@ -75,8 +75,8 @@ class ThisSysMem:
 
 class ThisSysNet:
     def __init__(self):
-        self.Total_Bytes_sent = f"{get_size(net_io.bytes_sent)}"
-        self.Total_Bytes_received = f"{get_size(net_io.bytes_recv)}"
+        self.total_bytes_sent = f"{get_size(net_io.bytes_sent)}"
+        self.total_bytes_received = f"{get_size(net_io.bytes_recv)}"
     def net_info(cls):
         # get all network interfaces (virtual and physical)
         if_addrs = psutil.net_if_addrs()
