@@ -56,14 +56,14 @@ Kirigami.ApplicationWindow {
                 iconName: model.icon
                 checkable: true
 
-                onTriggered: {
-                    Helper.navigateToPage(Qt.resolvedUrl('Information.qml'))
+//                onTriggered: {
+//                    Helper.navigateToPage(Qt.resolvedUrl('Information.qml'))
 
-                    for (var i = 0; i < sidebar.actions.length; ++i ) {
-                        sidebar.actions[i].checked = false;
-                    }
-                    checked = true;
-                }
+//                    for (var i = 0; i < sidebar.actions.length; ++i ) {
+//                        sidebar.actions[i].checked = false;
+//                    }
+//                    checked = true;
+//                }
             }
 
             onObjectAdded: {
@@ -74,6 +74,5 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    pageStack.initialPage: Kirigami.Page {
-    }
+    Component.onCompleted: pageStack.push(Qt.resolvedUrl('SummaryPage.qml'))
 }
